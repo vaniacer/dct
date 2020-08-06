@@ -1,0 +1,7 @@
+#!/bin/bash
+declare -A ips
+while read line; do
+    raw=( $line )
+    ips[$raw]=''
+done < access.log
+printf '%s\n' ${!ips[@]} > uniq_ips

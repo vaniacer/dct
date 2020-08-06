@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+    - "8888:80"
+    volumes:
+        - .:/code
+        - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+    links:
+        - php
+  php:
+    image: php:7-fpm
+    volumes:
+        - .:/code
